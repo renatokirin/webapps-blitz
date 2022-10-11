@@ -36,6 +36,19 @@ console.log(oneKeyObject([object1, object2, object3]));
 
 
 
+// 2) 
+
+function halfOfString(str) {
+    let halfStrLength = str.length / 2;
+    return str.slice(halfStrLength, str.length); 
+}
+
+console.log(halfOfString("Javascript i nije tolko los"))
+
+
+
+
+
 
 
 
