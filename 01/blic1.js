@@ -50,6 +50,29 @@ console.log(halfOfString("Javascript i nije tolko los"))
 
 
 
+// 3) 
+let someArray = [321, 63, "Marmelada", 4, "Kruh", 1, 1234, "Tanjur", 50];
+
+function arrayFunc(array) {
+
+    let numberArray = [];
+    let stringArray = [];
+
+    array.forEach(item => {
+        (typeof(item) === "number") ? numberArray.push(item) : stringArray.push(item);
+    })
+
+    numberArray.sort(function(a, b) {return a-b});
+
+    let finalArray = numberArray.concat(stringArray);
+    console.log(finalArray)
+}
+arrayFunc(someArray)
+
+
+
+
+
 
 
 
