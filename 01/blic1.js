@@ -75,6 +75,27 @@ arrayFunc(someArray)
 
 
 
+// 4) 
+
+let someObject = {
+    '1': [143, 'A', 21],
+    '2': 'B',
+    '3': [12, 11, 'C']
+};
+
+
+function func(object) {
+    Object.entries(object).forEach(([key, value]) => {
+        console.log(key, value)
+    })
+}
+
+func(someObject)
+
+
+
+
+
 
 
 
