@@ -23,5 +23,17 @@ app.post("/saveItem", async (req, response) => {
     });
 });
 
+// http://localhost:5000/getBrand/New
+app.get("/getBrand/:brand", async (req, response) => {
+    let query = { brand: req.params.brand };
+
+    collection.find(query).toArray().then(result => {
+        if (!result.length == 0) return response.status(200).json(result);
+        return response.json({ "status": "Failed", "message": `Brand ${req.params.brand} not found in DB`});
+    }).catch(err => {
+        return response.status(500).json({ "message": err });
+    });
+});
+
 
 app.listen(port, () => console.log(`Works on port ${port}`));
