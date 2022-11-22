@@ -36,4 +36,16 @@ app.get("/getBrand/:brand", async (req, response) => {
 });
 
 
+app.get("/getItemById/:id", async (req, response) => {
+    let query = { _id: ObjectId(req.params.id) };
+
+    collection.find(query).toArray().then(result => {
+        if (!result.length == 0) return response.status(200).json(result);
+        return response.json({ "status": "Failed", "message": `Item not found in DB`}); //
+    }).catch(err => {
+        return response.status(500).json({ "message": err });
+    });    
+});
+
+
 app.listen(port, () => console.log(`Works on port ${port}`));
