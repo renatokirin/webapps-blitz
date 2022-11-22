@@ -47,5 +47,18 @@ app.get("/getItemById/:id", async (req, response) => {
     });    
 });
 
+app.patch("/updateItemPrice/:id", async (req, response) => {
+    let query = { _id: ObjectId(req.params.id) };
+
+    let cijena = req.body.newPrice;
+
+    collection.updateOne(query, { $set: { 'price': cijena } }).then(result => {
+        if (!result.length == 0) return response.status(200).json({"message": `Item ${req.params.id} updated with new price ${cijena}`});
+        return response.json({ "status": "Failed", "message": `Couldn't find the item`});
+    }).catch(err => {
+        return response.status(500).json({ "message": err });
+    });    
+});
+
 
 app.listen(port, () => console.log(`Works on port ${port}`));
